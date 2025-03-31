@@ -69,7 +69,7 @@ public class PruebasController {
         model.addAttribute("precioSup", precioSup);
         return "/pruebas/listado2";
     }
-    @PostMapping("/query3")
+        @PostMapping("/query3")
     public String consultaQuery3(@RequestParam(value = "precioInf") double precioInf,
             @RequestParam(value = "precioSup") double precioSup, Model model) {
         var productos = productoService.metodoNativo(precioInf, precioSup);

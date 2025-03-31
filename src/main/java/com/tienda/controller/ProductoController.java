@@ -31,6 +31,19 @@ public class ProductoController {
         model.addAttribute("totalProductos", lista.size());
         return "/producto/listado";
     }
+    
+    
+        @PostMapping("/listado")
+    public String consultaprueba(@RequestParam(value = "precioInf") double precioInf,
+            @RequestParam(value = "precioSup") double precioSup, Model model) {
+        var productos = productoService.findByPrecioBetweenOrderByDescripcion(precioInf, precioSup);
+        model.addAttribute("productos", productos);
+        model.addAttribute("precioInf", precioInf);
+        model.addAttribute("precioSup", precioSup);
+        model.addAttribute("totalProductos", productos.size());
+        return "/producto/listado";
+    }
+
 
 
 

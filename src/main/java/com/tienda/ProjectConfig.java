@@ -24,6 +24,13 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 public class ProjectConfig implements WebMvcConfigurer {
     /* Los siguientes métodos son para incorporar el tema de internacionalización en el proyecto */
+        @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Autowired
+    public void configurerGlobal(AuthenticationManagerBuilder build) throws Exception {
+        build.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+    }
     
     /* localeResolver se utiliza para crear una sesión de cambio de idioma*/
     @Bean
@@ -95,13 +102,7 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .logout((logout) -> logout.permitAll());
         return http.build();
     }
-    @Autowired
-    private UserDetailsService userDetailsService;
 
-    @Autowired
-    public void configurerGlobal(AuthenticationManagerBuilder build) throws Exception {
-        build.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
-    }
 
 
 

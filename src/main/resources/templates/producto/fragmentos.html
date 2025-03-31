@@ -6,6 +6,7 @@
         <title>TechShop</title>
     </head>
     <body>
+        
         <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
         <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
             <div class="container">
@@ -82,6 +83,7 @@
                 </div>
             </div>
         </section>
+        
 
         <!-- 3 Sección principal para mostrar la informaccion de la entidad producto -->​
         <section th:fragment="listadoProductos" id="productos">​
@@ -230,5 +232,38 @@
                 </div>
             </div>
         </section>
+        
+        
+        <section th:fragment="filtros" class="bg-light">
+            <div class="row py-2 justify-content-center">
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                    <form method="POST" th:action="@{/producto/listado}" 
+                          class="was-validated">
+                        <div class="card">                            
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="precioInf">[[#{pruebas.precio.inferior}]]</label>
+                                    <input type="number" class="form-control" 
+                                           th:value="${precioInf}"
+                                           th:name="precioInf" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="precioSup">[[#{pruebas.precio.superior}]]</label>
+                                    <input type="number" class="form-control" 
+                                           th:value="${precioSup}"
+                                           th:name="precioSup" required="true"/>
+                                </div>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-check"></i> [[#{pruebas.ampliadas}]]
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>   
+        </section> 
+        
     </body>
 </html>

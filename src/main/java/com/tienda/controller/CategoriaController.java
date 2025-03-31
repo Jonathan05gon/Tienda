@@ -26,6 +26,7 @@ public class CategoriaController {
         model.addAttribute("totalCategorias", lista.size());
         return "/categoria/listado";
     }
+    
 
 
 
@@ -58,4 +59,5 @@ public class CategoriaController {
         model.addAttribute("categoria", categoria);
         return "/categoria/modifica";
     }
+    
 }
